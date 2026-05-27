@@ -1,0 +1,32 @@
+#!/bin/bash
+
+echo -n "파일/디렉터리 이름 입력 : "
+read fname
+
+if [ ! -e "$fname" ]; then
+    echo "$fname 은(는) 존재하지 않습니다."
+
+elif [ -d "$fname" ]; then
+    echo "$fname 은(는) 디렉터리입니다."
+
+elif [ -L "$fname" ]; then
+    echo "$fname 은(는) 심볼릭 링크입니다."
+
+elif [ -c "$fname" ]; then
+    echo "$fname 은(는) 문자 장치 파일입니다."
+
+elif [ -b "$fname" ]; then
+    echo "$fname 은(는) 블록 장치 파일입니다."
+
+elif [ -p "$fname" ]; then
+    echo "$fname 은(는) 파이프 파일입니다."
+
+elif [ -S "$fname" ]; then
+    echo "$fname 은(는) 소켓 파일입니다."
+
+elif [ -f "$fname" ]; then
+    echo "$fname 은(는) 일반 파일입니다."
+
+else
+    echo "알 수 없는 파일 형식입니다."
+fi
